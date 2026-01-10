@@ -1,7 +1,7 @@
-# MVVSL
+# MVSL
 
 ## Overview
-MVVSL is a lightweight SwiftUI design pattern that splits the traditional ViewModel into two parts:
+MVSL is a lightweight SwiftUI design pattern that splits the traditional ViewModel into two parts:
 - **ViewState**: Observable state owned by the view.
 - **Logic**: Stateless operations that read/write ViewState and call into Model/services.
 

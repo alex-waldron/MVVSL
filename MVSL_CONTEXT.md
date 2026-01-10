@@ -133,7 +133,7 @@ Cons:
     - In this case the wrappedValue `CountService` won't change but even needing to even think of that is annoying af
 - Using an underscore-prefixed api REEKS of a code smell
 
-## New Design Pattern: MVVSL
+## New Design Pattern: MVSL
 ### Tenets
 If you don't care about all of the following, this design is not for you
 
@@ -141,21 +141,21 @@ If you don't care about all of the following, this design is not for you
 Must work seamlessly with SwiftUI. Take advantage of all the primitives (`State`, `Binding`, `Environment`, `Observable`). Working with the system leads to the smallest maintenance burden possible
 
 #### Little to no abstractions
-MVVSL is purely a design pattern. It does not impose a "must use" architecture for all screens. It's simply a slight restructuring of a ViewModel which minimizes any sort of learning curve. This tenet is the reason TCA was not chosen. See [Why not TCA](#why-not-tca) for more details.
+MVSL is purely a design pattern. It does not impose a "must use" architecture for all screens. It's simply a slight restructuring of a ViewModel which minimizes any sort of learning curve. This tenet is the reason TCA was not chosen. See [Why not TCA](#why-not-tca) for more details.
 
 #### Testable
 It must be test platform / test pattern agnostic. The pattern must get logic out of the view
 
-### Core Concepts of MVVSL
+### Core Concepts of MVSL
 - **Model**: Data model. Pure Data, Services, etc. Same as MVVM.
 - **View**: SwiftUI view. Same as MVVM
 - **ViewState**: The state of your view. Typically an `Observable`
 - **Logic**: The glue between your `ViewState` and your `Model`. Used in the `body` of a `View`
 
-The only difference between MVVM and MVVSL is the decomposition of the `ViewModel` into `ViewState` and `Logic`.
+The only difference between MVVM and MVSL is the decomposition of the `ViewModel` into `ViewState` and `Logic`.
 
 ### Example
-Continuing with our CounterView example, to adopt MVVSL we must decompose the CounterViewModel into two pieces; `ViewState` and `Logic`
+Continuing with our CounterView example, to adopt MVSL we must decompose the CounterViewModel into two pieces; `ViewState` and `Logic`
 
 ```swift
 @MainActor @Observable final class CounterViewState {
@@ -187,7 +187,7 @@ struct CounterView: View {
 ```
 
 ### Testing
-The `Logic` portion of MVVSL is your testable unit.
+The `Logic` portion of MVSL is your testable unit.
 
 ```swift
 @Test func example() {
@@ -241,4 +241,4 @@ TCA is sick. The more that I understand it, the more that my brain is tickled. I
 - https://medium.com/@thakurneeshu280/understanding-mvvm-architecture-in-swiftui-ddc10f7f92fa
 
 ## See Also
-- [MVVSL](MVVSL.md)
+- [MVSL](MVSL.md)
